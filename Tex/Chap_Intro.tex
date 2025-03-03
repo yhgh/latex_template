@@ -1,0 +1,42 @@
+\chapter{引言（绪论）}\label{chap:introduction}
+
+\section{模版使用方法}
+
+考虑到许多同学可能缺乏\LaTeX{}使用经验，本文首先介绍本模版的使用方法。论文推荐用overleaf在线编辑网站撰写，\url{https://www.overleaf.com/}。优点是可以通过Visual Editor模式进行所见即所得的撰写，并且可以一键编译，缺点是免费版编译时间有限制，如遇到编译超时问题，可以只保留正在编写的章节，注释掉其他章节，进行编译。全部撰写完后再进行尝试，或线下编译。论文主要撰写过程可分为下面几部分：
+\begin{enumerate}
+    \item 进入Tex文件夹中的Frontinfo.tex文件，填写相应信息。通过修改``degree”命令下的相关信息，如学位：学士、硕士、博士，论文模版会据学位名称自动切换，需确保拼写准确。
+    \item 进入Tex文件夹中的Frontinfo.tex文件，填写摘要和关键词的中英文信息。
+    \item 进入Tex文件夹中的Prematter.tex文件，填写符号和缩略语使用，如不需要进入根目录的Thesis.tex文件中，在句首用$\%$注释掉第81行“input$\{$Tex/Prematter$\}$”
+    \item 为每个相关章节再Tex文件夹中创建空白的tex文件，如``Chap\_Intro.tex"，和``Chap\_Guide.tex"等，再进入Tex文件夹中的Maimatter.tex文件中用``input"命令插入相应章节。
+    \item 进入每个章节相应的tex文件中，撰写论文具体内容。
+    \item 在Tex文件夹中的Backmatter.tex中填写发表成果和致谢信息。
+\end{enumerate}
+
+本毕业论文模版改编自莫晃锐的ucasthesis模版。
+中国科学院大学学位论文模板ucasthesis基于中科院数学与系统科学研究院吴凌云研究员的CASthesis模板发展而来。如有需要，可通过下方链接下载ucasthesis模版
+\begin{center}
+    \href{https://github.com/mohuangrui/ucasthesis}{Github/ucasthesis}: \url{https://github.com/mohuangrui/ucasthesis}
+\end{center}
+
+\section{系统要求（如使用overleaf可忽略此节）}\label{sec:system}
+
+\href{https://github.com/mohuangrui/ucasthesis}{\texttt{ucasthesis}} 宏包可以在目前主流的 \href{https://en.wikibooks.org/wiki/LaTeX/Introduction}{\LaTeX{}} 编译系统中使用，如\TeX{}Live和MiK\TeX{}。因C\TeX{}套装已停止维护，\textbf{不再建议使用} （请勿混淆C\TeX{}套装与ctex宏包。C\TeX{}套装是集成了许多\LaTeX{}组件的\LaTeX{}编译系统。 \href{https://ctan.org/pkg/ctex?lang=en}{ctex} 宏包如同ucasthesis，是\LaTeX{}命令集，其维护状态活跃，并被主流的\LaTeX{}编译系统默认集成，是几乎所有\LaTeX{}中文文档的核心架构）。推荐的 \href{https://en.wikibooks.org/wiki/LaTeX/Installation}{\LaTeX{}编译系统} 和 \href{https://en.wikibooks.org/wiki/LaTeX/Installation}{\LaTeX{}文本编辑器} 为
+\begin{center}
+    %\footnotesize% fontsize
+    %\setlength{\tabcolsep}{4pt}% column separation
+    %\renewcommand{\arraystretch}{1.5}% row space 
+    \begin{tabular}{lcc}
+        \hline
+        %\multicolumn{num_of_cols_to_merge}{alignment}{contents} \\
+        %\cline{i-j}% partial hline from column i to column j
+        操作系统 & \LaTeX{}编译系统 & \LaTeX{}文本编辑器\\
+        \hline
+        Linux & \href{https://www.tug.org/texlive/acquire-netinstall.html}{\TeX{}Live Full} & \href{http://www.xm1math.net/texmaker/}{Texmaker} 或 Vim\\
+        MacOS & \href{https://www.tug.org/mactex/}{Mac\TeX{} Full} & \href{http://www.xm1math.net/texmaker/}{Texmaker} 或 Texshop\\
+        Windows & \href{https://www.tug.org/texlive/acquire-netinstall.html}{\TeX{}Live Full} 或 \href{https://miktex.org/download}{MiK\TeX{}} & \href{http://www.xm1math.net/texmaker/}{Texmaker}\\
+        \hline
+    \end{tabular}
+\end{center}
+
+\LaTeX{}编译系统，如\TeX{}Live（Mac\TeX{}为针对MacOS的\TeX{}Live)，用于提供编译环境，\LaTeX{}文本编辑器 (如Texmaker) 用于编辑\TeX{}源文件。请从各软件官网下载安装程序，勿使用不明程序源。\textbf{\LaTeX{}编译系统和\LaTeX{}编辑器分别安装成功后，即完成了\LaTeX{}的系统配置}，无需其他手动干预和配置。若系统原带有旧版的\LaTeX{}编译系统并想安装新版，请\textbf{先卸载干净旧版再安装新版}。
+

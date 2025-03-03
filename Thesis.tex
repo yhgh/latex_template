@@ -1,0 +1,108 @@
+%---------------------------------------------------------------------------%
+%-                                                                         -%
+%-                           LaTeX Template                                -%
+%-                                                                         -%
+%---------------------------------------------------------------------------%
+%- Copyright (C) Huangrui Mo <huangrui.mo@gmail.com>
+%- This is free software: you can redistribute it and/or modify it
+%- under the terms of the GNU General Public License as published by
+%- the Free Software Foundation, either version 3 of the License, or
+%- (at your option) any later version.
+%---------------------------------------------------------------------------%
+%->> Document class declaration
+%---------------------------------------------------------------------------%
+\documentclass[twoside]{Style/ucasthesis}%
+%- Multiple optional arguments:
+%- [<oneside|twoside|print>]% oneside eprint, twoside eprint, or paper print
+%- [fontset=<adobe|none|...>]% specify font set instead of automatic detection
+%- [scheme=plain]% thesis writing of international students
+%- [draftversion]% show draft version information
+%- [standard options for ctex book class: draft|paper size|font size|...]%
+%---------------------------------------------------------------------------%
+%->> Document settings
+%---------------------------------------------------------------------------%
+\usepackage[numbers,list]{Style/artratex}% 文档设置
+%- 参考文献格式
+%- [<numbers|super|authoryear|alpha>]% set citation and reference style
+%- <numbers>: textual: Jones [1]; parenthetical: [1]
+%- <super>: textual: Jones superscript [1]; parenthetical: superscript [1]
+%- <authoryear>: textual: Jones (1995); parenthetical: (Jones, 1995)
+%- <alpha>: textual: not available; parenthetical: [Jon95]
+%- [geometry]% reconfigure page layout via geometry package
+%- [lscape]% provide landscape layout environment
+%- [xhf]% disable header and footer via fancyhdr package
+%- [color]% provide color support via xcolor package
+%- [background]% enable page background
+%- [tikz]% provide complex diagrams via tikz package
+%- [table]% provide complex tables via ctable package
+%- [list]% provide enhanced list environments for algorithm and coding
+%- [math]% enable some extra math packages
+%- [xlink]% disable link colors
+\usepackage{Style/artracom}% 一些个性化设置，比如参考文献上标\upcite
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{graphicx}
+%\usepackage{bm}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{hyperref}
+\usepackage{array}%写科研成果时候有用
+\usepackage{makecell}
+\usepackage[justification=centering]{caption}
+\usepackage{notoccite}
+%---------------------------------------------------------------------------%
+%->> Document inclusion
+%---------------------------------------------------------------------------%
+%\includeonly{Tex/Chap_1,...,Tex/Chap_N}% selected files compilation
+%---------------------------------------------------------------------------%
+%->> Document content
+%---------------------------------------------------------------------------%
+%-
+%-> Titlepage information
+%-
+\input{Tex/Frontinfo}%请先在这里输入个人信息
+\begin{document}
+%-
+%-> Frontmatter: title page, abstract, content list, symbol list, preface
+%-
+\frontmatter% initialize the environment
+\input{Tex/Frontmatter}% 标题页和摘要页
+{% content list region
+\linespread{1.2}% local line space
+\intotoc*{\cleardoublepage}{\contentsname}% 将目录添加到书签
+\tableofcontents% 目录
+\intotoc*{\cleardoublepage}{\listfigurename}% 将图片目录添加进书签
+\listoffigures% 图片目录
+\intotoc*{\cleardoublepage}{\listtablename}% 将表格目录添加进书签
+\listoftables% 表格目录
+}
+\input{Tex/Prematter}% 符号目录，前言（可不写）
+%-
+%-> 正文
+%-
+\mainmatter% 初始化正文环境
+\input{Tex/Chap_Intro}% 正文部分
+\input{Tex/Chap_Guide}
+%-
+%-> 附录，无附录可注释掉下面三行
+%-
+\cleardoublepage%
+\appendix% 初始化附录环境
+\input{Tex/Appendix}% 附录内容
+%-
+%-> 封底：参考文献，术语表，索引，致谢，作者信息等
+%-
+\backmatter% 初始化封底环境
+\intotoc*{\cleardoublepage}{\bibname}% 加入书签
+\artxifstreq{\artxbib}{bibtex}{% 启用bibtex
+    \bibliography{Biblio/ref}% 参考文献bib文件
+}{%
+    \printbibliography% bibliography
+}
+\input{Tex/Backmatter}%其他信息
+\end{document}
+%---------------------------------------------------------------------------%
+
